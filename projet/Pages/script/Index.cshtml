@@ -1,0 +1,151 @@
+﻿@page
+@model projet.Pages.script.IndexModel
+
+@{
+    ViewData["Title"] = "Query SQL";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .alert-info {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #d9edf7;
+            border: 1px solid #bce8f1;
+            border-radius: 4px;
+            color: #31708f;
+        }
+
+        .table {
+            max-width: 800px;
+            margin: 20px auto;
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .table th, .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .table-striped tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Query SQL</h1>
+
+        <form method="post">
+            <div class="form-group">
+                <label for="SqlQuery">Requête SQL :</label>
+                <textarea class="form-control" id="SqlQuery" rows="5" name="SqlQuery" asp-for="SqlQuery"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Exécuter</button>
+        </form>
+
+        @if (!string.IsNullOrEmpty(Model.SqlQueryResult))
+        {
+            <h2>Résultats :</h2>
+            <div class="alert alert-info">
+                @Model.SqlQueryResult
+            </div>
+
+            @if (Model.SqlQueryColumns.Count > 0 && Model.SqlQueryRows.Count > 0)
+            {
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            @foreach (var column in Model.SqlQueryColumns)
+                            {
+                                <th>@column</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var row in Model.SqlQueryRows)
+                        {
+                            <tr>
+                                @foreach (var item in row)
+                                {
+                                    <td>@item</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        }
+    </div>
+</body>
+</html>

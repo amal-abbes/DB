@@ -1,0 +1,110 @@
+﻿@page
+@model projet.Pages.Departement.CreateModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Department</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+        }
+        
+        .alert {
+            padding: 8px 12px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            font-weight: bold;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .btn-primary {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Ajouter Department</h2>
+        @if (Model.errorMessage.Length > 0)
+        {
+            <div class='alert alert-danger' role='alert'>
+                <strong>@Model.errorMessage</strong>
+            </div>
+        }
+
+        @if (Model.successMessage.Length > 0)
+        {
+            <div class='alert alert-success' role='alert'>
+                <strong>@Model.successMessage</strong>
+            </div>
+        }
+
+        <form method="post">
+            <div class="form-group">
+                <label for="nom">Nom:</label>
+                <input type="text" class="form-control" id="nom" name="nom" required>
+            </div>
+            <div class="form-group">
+                <label for="numChef">NumChef:</label>
+                <input type="text" class="form-control" id="numChef" name="numChef">
+            </div>
+            <div class="form-group">
+                <label for="numAgendaDept">NumAgendaDept:</label>
+                <input type="text" class="form-control" id="numAgendaDept" name="numAgendaDept" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</body>
+</html>

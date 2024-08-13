@@ -1,0 +1,170 @@
+﻿@page
+@model projet.Pages.Employee.EditModel
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-primary, .btn-outline-primary {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-outline-primary {
+            background-color: transparent;
+            color: #007bff;
+            border: 2px solid #007bff;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .alert {
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Employee</h2>
+
+        @if (!String.IsNullOrEmpty(Model.errorMessage))
+        {
+            <div class="alert alert-danger">
+                @Model.errorMessage
+            </div>
+        }
+
+        @if (!String.IsNullOrEmpty(Model.successMessage))
+        {
+            <div class="alert alert-success">
+                @Model.successMessage
+            </div>
+        }
+
+        <form method="post">
+            <div class="form-group">
+                <label for="numEmploye">Employee ID</label>
+                <input type="text" class="form-control" id="numEmploye" name="numEmploye" value="@Model.employee.numEmploye" required />
+            </div>
+
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" class="form-control" id="nom" name="nom" value="@Model.employee.nom" required />
+            </div>
+
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" class="form-control" id="prenom" name="prenom" value="@Model.employee.prenom" required />
+            </div>
+
+            <div class="form-group">
+                <label for="telIntern">Téléphone Interne</label>
+                <input type="text" class="form-control" id="telIntern" name="telIntern" value="@Model.employee.telIntern" required />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="@Model.employee.email" required />
+            </div>
+
+            <div class="form-group">
+                <label for="niveau">Niveau</label>
+                <input type="text" class="form-control" id="niveau" name="niveau" value="@Model.employee.niveau" required />
+            </div>
+
+            <div class="form-group">
+                <label for="numDept">NumDept</label>
+                <input type="text" class="form-control" id="numDept" name="numDept" value="@Model.employee.numDept" required />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+
+            <div class="form-group">
+                <a class="btn btn-outline-primary" href="/Employee/Index" role="button">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

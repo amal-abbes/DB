@@ -1,0 +1,111 @@
+﻿@page
+@model projet.Pages.Departement.DeleteModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Department</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+        }
+        
+        .alert {
+            padding: 8px 12px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            font-weight: bold;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .btn-danger, .btn-outline-primary {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        
+        .btn-outline-primary {
+            background-color: transparent;
+            border: 1px solid #007bff;
+            color: #007bff;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Supprimer Department</h2>
+
+        @if (!String.IsNullOrEmpty(Model.errorMessage))
+        {
+            <div class='alert alert-danger' role='alert'>
+                @Model.errorMessage
+            </div>
+        }
+
+        <form method="post">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Department ID</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="num" value="@Model.num" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-9 offset-sm-3">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <a class="btn btn-outline-primary" href="/Departement/Index" role="button">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+﻿@page
+@model projet.Pages.Employee.DeleteModel
+@{
+    ViewData["Title"] = "Supprimer Employee";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-danger, .btn-outline-primary {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .btn-outline-primary {
+            background-color: transparent;
+            color: #007bff;
+            border: 2px solid #007bff;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .alert {
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Supprimer Employee</h2>
+
+        @if (!String.IsNullOrEmpty(Model.errorMessage))
+        {
+            <div class="alert alert-danger">
+                @Model.errorMessage
+            </div>
+        }
+
+        <form method="post">
+            <div class="form-group">
+                <label for="numEmploye">Employee ID</label>
+                <input type="text" class="form-control" id="numEmploye" name="numEmploye" value="@Model.numEmploye" />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+
+            <div class="form-group">
+                <a class="btn btn-outline-primary" href="/Employee/Index" role="button">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
